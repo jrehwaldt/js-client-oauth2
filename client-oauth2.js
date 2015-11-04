@@ -295,6 +295,7 @@
    */
   function ClientOAuth2 (options) {
     this.options = options
+    this.options.parseResponse = options.parseResponse || function(response) { return response }
 
     this.code = new CodeFlow(this)
     this.token = new TokenFlow(this)
@@ -532,6 +533,7 @@
       }
     })
       .then(handleAuthResponse)
+      .then(self.client.options.parseResponse)
       .then(function (data) {
         return new ClientOAuth2Token(self.client, data)
       })
@@ -658,6 +660,7 @@
       }
     })
       .then(handleAuthResponse)
+      .then(self.client.options.parseResponse)
       .then(function (data) {
         return new ClientOAuth2Token(self.client, data)
       })
@@ -746,6 +749,7 @@
       }
     })
       .then(handleAuthResponse)
+      .then(self.client.options.parseResponse)
       .then(function (data) {
         return new ClientOAuth2Token(self.client, data)
       })
@@ -797,6 +801,7 @@
       }
     })
       .then(handleAuthResponse)
+      .then(self.client.options.parseResponse)
       .then(function (data) {
         return new ClientOAuth2Token(self.client, data)
       })
