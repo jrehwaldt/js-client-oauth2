@@ -46,6 +46,7 @@
     "standard": "^4.5.4"
   },
   "dependencies": {
+    "bluebird": "^3.0.5",
     "popsicle": "^1.0.0"
   },
   "standard": {
